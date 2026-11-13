@@ -1,0 +1,21 @@
+/* Motion reinforces interaction without delaying access to content. */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1)}
+body,header,.icon-button,.filter,.button,.project-image,.skills span,.contact{transition-property:background-color,border-color,color,box-shadow;transition-duration:.3s;transition-timing-function:ease}
+header{transition:background-color .3s ease,border-color .3s ease,border-radius .35s var(--motion-ease),box-shadow .3s ease,width .35s var(--motion-ease),padding .35s var(--motion-ease)}
+.button,.icon-button,.filter,.back-to-top,.project-arrow,.close-dialog,.socials a,.email-link,.brand,.project-card{transition:transform .26s var(--motion-ease),background-color .22s ease,border-color .22s ease,color .22s ease,box-shadow .22s ease,opacity .22s ease}
+@media(hover:hover){.button:hover,.icon-button:hover,.filter:hover,.socials a:hover,.brand:hover{transform:translateY(-2px)}.project-card:hover .project-image{box-shadow:0 16px 35px var(--shadow);border-color:var(--accent)}.project-card:hover .project-arrow{transform:translate(3px,-3px)}.close-dialog:hover{transform:rotate(90deg)}.email-link:hover{color:var(--accent)}}
+.button:active,.icon-button:active,.filter:active,.project-card:active,.back-to-top:active{transform:scale(.97)}
+.filter[aria-pressed=true]{box-shadow:0 3px 14px var(--shadow)}
+.project-image img{transition:transform .55s var(--motion-ease)}
+.projects.is-filtering .project-card{animation:card-enter .42s var(--motion-ease) both;animation-delay:calc(var(--card-order,0) * 35ms)}
+@keyframes card-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+dialog[open]{animation:dialog-enter .28s var(--motion-ease) both}dialog[open]::backdrop{animation:backdrop-enter .28s ease both}
+@keyframes dialog-enter{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes backdrop-enter{from{opacity:0}to{opacity:1}}
+.email-status:not(:empty){animation:feedback-enter .25s var(--motion-ease) both}
+@keyframes feedback-enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){header.menu-open .mobile-menu{transform-origin:top center;animation:menu-enter .23s var(--motion-ease) both}}
+@keyframes menu-enter{from{opacity:0;transform:translateY(-7px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto!important}}
+
+.close-dialog{display:inline-grid;place-items:center;padding:0;line-height:1}.close-dialog svg{display:block;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;pointer-events:none}
